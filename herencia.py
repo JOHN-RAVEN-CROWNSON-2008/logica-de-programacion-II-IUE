@@ -36,3 +36,5 @@ FormerMinisterOfZion = Cat("Sean Combs", "Diddy", "Partyous Polemicus", 50, "Abl
 FormerMinisterOfZion.cheatingPeople()#2 Children object with inheritance call to
 FormeMrPresidentOfPresidentsOfZion = Bird("Jefrey", "Smarticous Powerticous", "Dead", 5000000000000000000000000, "Being somebody whose power has been able to control entire goverments", 1010101010101)#3 Children object with inheritance 
 FormeMrPresidentOfPresidentsOfZion.flyingAbove()#3 Children object with inheritance call to              
+
+#Ejercicio de herencia .pyit
