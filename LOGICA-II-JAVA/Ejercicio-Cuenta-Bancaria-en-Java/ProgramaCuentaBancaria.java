@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ProgramaCuentaBancaria{
     public static void main(String[] args){
         System.out.println("Hello");
@@ -7,6 +9,7 @@ public class ProgramaCuentaBancaria{
 }
 
 class CuentaBancaria{
+    static Scanner teclado = new Scanner(System.in);
     String titular;
     int saldo;
     String tipoCuenta;
@@ -38,4 +41,3 @@ class CuentaBancaria{
 
     }
 }
-
