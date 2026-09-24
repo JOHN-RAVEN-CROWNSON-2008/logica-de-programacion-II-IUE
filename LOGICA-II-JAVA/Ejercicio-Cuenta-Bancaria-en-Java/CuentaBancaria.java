@@ -1,15 +1,16 @@
 import java.util.Scanner;
 
+//Scanner se define como una clase a partir del cual crearemos objetos, un ejemplo de método es opcion = teclado.nextInt(); (Métodos de Scanner find?)
+
 public class CuentaBancaria {
     static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // 1. Instanciamos la cuenta con datos iniciales
-        Cuenta miCuenta = new Cuenta("Juan Pérez", 1000.0, "Ahorros", "Bancolombia", "1017234567");
-
+        //Todo lo que se ejecuta en la clase CuentaBancaria, es por medio del (Main) == Ejecución de la clase 
+        Cuenta miCuenta = new Cuenta("Juan Pérez", "Ahorros", "Bancolombia", "1017234567");
+        //Creamos el objeto "Mi cuenta" a partir de la clase Cuenta
         int opcion = 0;
 
-        // El bucle se ejecuta mientras el usuario no elija salir (opción 4)
         do {
             System.out.println("\n--- CAJERO AUTOMÁTICO ---");
             System.out.println("1. Depositar");
@@ -48,55 +49,57 @@ public class CuentaBancaria {
         } while (opcion != 4);
     }
 
-    // Clase interna declarada como static para poder instanciarla directamente desde main
-    static class Cuenta {
-        String titular;
-        double saldo;
-        String tipoCuenta;
-        String banco;
-        String id;
+}//Puedo definier la clase cuenta tanto dentro del Clase principal como por fuera, pero por dentro debe ser declarada como Static, lo estándar es por fuera.
+//Shift + Tab para organizar el código
 
-        public Cuenta(String titular, double saldo, String tipoCuenta, String banco, String id) {
-            this.titular = titular;
-            this.saldo = saldo;
-            this.tipoCuenta = tipoCuenta;
-            this.banco = banco;
-            this.id = id;
-        }
+//En Java el constructor debe llamarse igual que la Clase
+class Cuenta {
+    String titular;
+    double saldo;
+    String tipoCuenta;
+    String banco;
+    String id;
 
-        public void depositar(double valor) {
-            if (valor > 0) {
-                saldo += valor;
-                System.out.println("Depósito exitoso de $" + valor);
-                mostrarSaldo();
-            } else {
-                System.out.println("El monto a depositar debe ser mayor a 0.");
-            }
+    public Cuenta(String titular, String tipoCuenta, String banco, String id) {//Los parámetros dentro del paretesís son obligatorios para crear el objeto | Los parámetros dentro del paréntesis son obligatorios, pero puedo definir otros no obligatorios
+        this.titular = titular;
+        this.saldo = 0;
+        this.tipoCuenta = tipoCuenta;
+        this.banco = banco;
+        this.id = id;
+    }
+    //El double o void son los que me dicen que va a retornar el método, si vacío o que tipo de dato
+    public void depositar(double valor) {//Defino los argumentos o parámetros de entrada
+        if (valor > 0) {
+            saldo += valor;
+            System.out.println("Depósito exitoso de $" + valor);
+            mostrarSaldo();
+        } else {
+            System.out.println("El monto a depositar debe ser mayor a 0.");
         }
+    }
 
-        public void retirar(double monto) {
-            if (monto <= 0) {
-                System.out.println("El monto a retirar debe ser mayor a 0.");
-            } else if (monto > saldo) {
-                System.out.println("Fondos insuficientes. Su saldo actual es: $" + saldo);
-            } else {
-                saldo -= monto;
-                System.out.println("Retiro exitoso de $" + monto);
-                mostrarSaldo();
-            }
+    public void retirar(double valor) {
+        if (valor <= 0) {
+            System.out.println("El valor a retirar debe ser mayor a 0.");
+        } else if (valor > saldo) {
+            System.out.println("Fondos insuficientes. Su saldo actual es: $" + saldo);
+        } else {
+            saldo -= valor;
+            System.out.println("Retiro exitoso de $" + valor);
+            mostrarSaldo();
         }
+    }
 
-        public void mostrarSaldo() {
-            System.out.println("Saldo disponible: $" + saldo);
-        }
+    public void mostrarSaldo() {
+        System.out.println("Saldo disponible: $" + saldo);
+    }
 
-        public void mostrarInformacionCuenta() {
-            System.out.println("\n--- DETALLES DE LA CUENTA ---");
-            System.out.println("Banco: " + banco);
-            System.out.println("Titular: " + titular);
-            System.out.println("Documento/ID: " + id);
-            System.out.println("Tipo de cuenta: " + tipoCuenta);
-            System.out.println("Saldo actual: $" + saldo);
-        }
+    public void mostrarInformacionCuenta() {
+        System.out.println("\n--- DETALLES DE LA CUENTA ---");
+        System.out.println("Banco: " + banco);
+        System.out.println("Titular: " + titular);
+        System.out.println("Documento/ID: " + id);
+        System.out.println("Tipo de cuenta: " + tipoCuenta);
+        System.out.println("Saldo actual: $" + saldo);
     }
 }
